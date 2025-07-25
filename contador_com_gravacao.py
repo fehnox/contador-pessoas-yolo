@@ -134,10 +134,10 @@ class ContadorComGravacao:
                 cv2.putText(frame, f'ID: {track_id} ({conf:.2f})', 
                            (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
                 
-                # Desenha rastro
-                pontos = np.array(self.track_history[track_id], dtype=np.int32)
-                if len(pontos) > 1:
-                    cv2.polylines(frame, [pontos], False, (0, 255, 255), 2)
+                # Desenha rastro (comentado para remover linhas)
+                # pontos = np.array(self.track_history[track_id], dtype=np.int32)
+                # if len(pontos) > 1:
+                #     cv2.polylines(frame, [pontos], False, (0, 255, 255), 2)
         
         # Adiciona elementos visuais
         self.desenhar_linha_contagem(frame)

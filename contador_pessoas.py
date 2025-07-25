@@ -223,10 +223,10 @@ class ContadorPessoas:
                            (x1, y1 - 10),  # Posição do texto
                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
                 
-                # PASSO 8: Desenha o rastro/trilha da pessoa (linha amarela)
-                pontos = np.array(self.track_history[track_id], dtype=np.int32)
-                if len(pontos) > 1:  # Precisa de pelo menos 2 pontos para desenhar linha
-                    cv2.polylines(frame, [pontos], False, (0, 255, 255), 2)
+                # PASSO 8: Desenha o rastro/trilha da pessoa (comentado para remover linhas)
+                # pontos = np.array(self.track_history[track_id], dtype=np.int32)
+                # if len(pontos) > 1:  # Precisa de pelo menos 2 pontos para desenhar linha
+                #     cv2.polylines(frame, [pontos], False, (0, 255, 255), 2)
         
         # PASSO 9: Adiciona elementos visuais finais
         self.desenhar_linha_contagem(frame)  # Desenha a linha verde de contagem

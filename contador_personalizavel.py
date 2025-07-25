@@ -302,10 +302,10 @@ class ContadorPersonalizavel:
                 cv2.putText(frame, f'ID: {track_id} ({conf:.2f})', 
                            (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 0), 2)
                 
-                # Rastro
-                pontos = np.array(self.track_history[track_id], dtype=np.int32)
-                if len(pontos) > 1:
-                    cv2.polylines(frame, [pontos], False, (0, 255, 255), 3)
+                # Rastro (comentado para remover linhas)
+                # pontos = np.array(self.track_history[track_id], dtype=np.int32)
+                # if len(pontos) > 1:
+                #     cv2.polylines(frame, [pontos], False, (0, 255, 255), 3)
         
         self.desenhar_linha_contagem(frame)
         self.adicionar_info_tela(frame)
