@@ -1,0 +1,59 @@
+# ========================================
+# ARQUIVO DE CONFIGURAÇÃO DO DATASET YOLO
+# ========================================
+# Este arquivo define onde estão as imagens e labels para treinamento
+
+# CAMINHOS DOS CONJUNTOS DE DADOS
+train: ../train/images    # Pasta com imagens para treinamento (80% do dataset)
+val: ../valid/images      # Pasta com imagens para validação (15% do dataset)  
+test: ../test/images      # Pasta com imagens para teste (5% do dataset)
+
+# CONFIGURAÇÃO DAS CLASSES
+nc: 1              # Número de classes (nc = number of classes)
+                   # Neste caso = 1 porque só detectamos "pessoa"
+
+names: ['pessoa']  # Lista com nomes das classes
+                   # Deve ter exatamente 'nc' elementos
+                   # Cada posição corresponde ao ID da classe (pessoa = ID 0)
+
+# INFORMAÇÕES DO ROBOFLOW (de onde veio o dataset)
+roboflow:
+  workspace: mask-job                           # Nome do workspace no Roboflow
+  project: person-counting-alpin-mfwoy         # Nome do projeto
+  version: 1                                   # Versão do dataset
+  license: CC BY 4.0                           # Licença do dataset
+  url: https://universe.roboflow.com/mask-job/person-counting-alpin-mfwoy/dataset/1
+
+# ========================================
+# ESTRUTURA DOS DADOS ESPERADA:
+# ========================================
+# 
+# train/
+#   ├── images/          <- Imagens de treinamento (.jpg, .png)
+#   └── labels/          <- Anotações correspondentes (.txt)
+#       ├── img1.txt     <- Formato: classe x_centro y_centro largura altura
+#       ├── img2.txt     <- Valores normalizados (0.0 a 1.0)
+#       └── ...
+#
+# valid/
+#   ├── images/          <- Imagens de validação  
+#   └── labels/          <- Anotações de validação
+#
+# test/
+#   ├── images/          <- Imagens de teste
+#   └── labels/          <- Anotações de teste
+#
+# ========================================
+# FORMATO DOS ARQUIVOS .TXT (LABELS):
+# ========================================
+# Cada linha representa uma pessoa detectada:
+# classe x_centro y_centro largura altura
+# 
+# Exemplo:
+# 0 0.5 0.3 0.2 0.6
+# ↑ ↑   ↑   ↑   ↑
+# │ │   │   │   └── Altura da caixa (60% da imagem)
+# │ │   │   └────── Largura da caixa (20% da imagem)  
+# │ │   └────────── Centro Y (30% da altura da imagem)
+# │ └────────────── Centro X (50% da largura da imagem)
+# └──────────────── Classe 0 = pessoa

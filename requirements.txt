@@ -1,0 +1,9 @@
+# Dependências necessárias para o contador de pessoas
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+numpy>=1.21.0
+Pillow>=8.3.0
+
+# Dependências opcionais para gravação
+pyautogui>=0.9.50
+threading
